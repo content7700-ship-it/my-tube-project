@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pyaw Pyaw Gyi</title>
+    
+    <script src="https://pl30100429.effectivecpmnetwork.com/dd/4a/29/dd4a29f4a7baef1498ffd21b65723a80.js"></script>
+
+    <script src="https://pl30100431.effectivecpmnetwork.com/a3/42/18/a342185a9216886bb85c2db826ac16d9.js"></script>
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
         body { background-color: #111; color: #fff; display: flex; flex-direction: column; min-height: 100vh; }
@@ -14,6 +19,10 @@
         .search-box { display: flex; gap: 5px; width: 50%; max-width: 400px; }
         .search-box input { width: 100%; padding: 8px; border: none; border-radius: 4px; background: #333; color: #fff; }
         .search-box button { padding: 8px 15px; border: none; background: #ffcc00; color: #000; border-radius: 4px; font-weight: bold; cursor: pointer; }
+
+        /* Ads Layout Styling */
+        .ad-sidebar { width: 100%; text-align: center; margin-top: 20px; padding: 10px; background: #222; border-radius: 4px; border: 1px solid #333; }
+        .ad-under-player { width: 100%; text-align: center; margin-top: 20px; padding: 15px; background: #1a1a1a; border-radius: 8px; border: 1px dashed #444; }
 
         /* Container */
         .container { display: flex; flex: 1; position: relative; }
@@ -88,6 +97,11 @@
             <button onclick="filterCategory('japanese', this)">ဂျပန်</button>
             <button onclick="filterCategory('milf', this)">မမများ</button>
             <button onclick="filterCategory('amateur', this)">အပျော်တမ်း</button>
+            
+            <div class="ad-sidebar">
+                <script async="async" data-cfasync="false" src="https://pl30100430.effectivecpmnetwork.com/f7c652d11d8596df608e6f93212b815b/invoke.js"></script>
+                <div id="container-f7c652d11d8596df608e6f93212b815b"></div>
+            </div>
         </aside>
 
         <main>
@@ -102,6 +116,10 @@
                     <iframe id="videoPlayer" allowfullscreen></iframe>
                 </div>
                 <div class="watch-title" id="videoTitle"></div>
+                
+                <div class="ad-under-player">
+                    <div id="container-f7c652d11d8596df608e6f93212b815b"></div>
+                </div>
             </div>
         </main>
     </div>
@@ -109,10 +127,9 @@
     <script>
         const API_BASE = 'https://www.eporner.com/api/v2/video/search/';
         let page = 1;
-        let currentQuery = 'myanmar'; // Default to Myanmar videos
+        let currentQuery = 'myanmar';
         const perPage = 24;
 
-        // UI Selectors
         const videoGrid = document.getElementById('videoGrid');
         const gallerySection = document.getElementById('gallerySection');
         const watchSection = document.getElementById('watchSection');
@@ -120,10 +137,8 @@
         const videoTitle = document.getElementById('videoTitle');
         const loadMoreBtn = document.getElementById('loadMoreBtn');
 
-        // Fetch Videos from API
         async function fetchVideos(query = 'myanmar', append = false) {
             if (!append) { page = 1; videoGrid.innerHTML = '<p style="padding:20px;">ဗီဒီယိုများ ဆွဲယူနေပါသည်...</p>'; }
-            
             try {
                 const searchKeyword = query ? query : 'myanmar';
                 const url = `${API_BASE}?query=${encodeURIComponent(searchKeyword)}&per_page=${perPage}&page=${page}&thumbsize=big`;
@@ -145,13 +160,10 @@
             }
         }
 
-        // Render Cards with proper ePorner image source logic
         function renderCards(videos) {
             videos.forEach(v => {
                 const card = document.createElement('div');
                 card.className = 'card';
-                
-                // Thumbnail source handling
                 const imgUrl = v.default_thumb ? v.default_thumb.src : (v.thumbs && v.thumbs.length > 0 ? v.thumbs[0].src : '');
 
                 card.innerHTML = `
@@ -169,7 +181,6 @@
             });
         }
 
-        // Open Dedicated Watch Section instead of popup
         function openWatchPage(embedUrl, title) {
             gallerySection.style.display = 'none';
             watchSection.style.display = 'block';
@@ -178,14 +189,13 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Back to Home
         function goHome() {
             watchSection.style.display = 'none';
             videoPlayer.src = '';
             gallerySection.style.display = 'block';
         }
 
-        // Category Filter
+        // Auto re-trigger Adsterra banner layout on view changes
         function filterCategory(cat, btn) {
             document.querySelectorAll('aside button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -194,7 +204,6 @@
             fetchVideos(currentQuery, false);
         }
 
-        // Search Action
         function handleSearch() {
             const val = document.getElementById('searchInput').value.trim();
             currentQuery = val;
@@ -202,27 +211,22 @@
             fetchVideos(currentQuery, false);
         }
 
-        // Load More Pagination
         function loadMore() {
             page++;
             fetchVideos(currentQuery, true);
         }
 
-        // Notice Modal Control
         const entryModal = document.getElementById('entryModal');
         const agreeBtn = document.getElementById('agreeBtn');
         const seen = localStorage.getItem('pyawpyawgyi:entry_agree');
 
-        if (seen) {
-            entryModal.style.display = 'none';
-        }
+        if (seen) { entryModal.style.display = 'none'; }
 
         agreeBtn.addEventListener('click', () => {
             localStorage.setItem('pyawpyawgyi:entry_agree', '1');
             entryModal.style.display = 'none';
         });
 
-        // Initialize Web Load with default myanmar query
         fetchVideos('myanmar', false);
     </script>
 </body>
