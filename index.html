@@ -82,12 +82,12 @@
 
     <div class="container">
         <aside>
-            <button onclick="filterCategory('', this)" class="active">လတ်တလောအသစ်များ</button>
+            <button onclick="filterCategory('myanmar', this)" class="active">မြန်မာကားများ</button>
+            <button onclick="filterCategory('burmese subtitles', this)">မြန်မာစာတန်းထိုး</button>
             <button onclick="filterCategory('asian', this)">အာရှ</button>
             <button onclick="filterCategory('japanese', this)">ဂျပန်</button>
             <button onclick="filterCategory('milf', this)">မမများ</button>
             <button onclick="filterCategory('amateur', this)">အပျော်တမ်း</button>
-            <button onclick="filterCategory('cosplay', this)">ကာတွန်း/Cosplay</button>
         </aside>
 
         <main>
@@ -109,7 +109,7 @@
     <script>
         const API_BASE = 'https://www.eporner.com/api/v2/video/search/';
         let page = 1;
-        let currentQuery = '';
+        let currentQuery = 'myanmar'; // Default to Myanmar videos
         const perPage = 24;
 
         // UI Selectors
@@ -121,11 +121,11 @@
         const loadMoreBtn = document.getElementById('loadMoreBtn');
 
         // Fetch Videos from API
-        async function fetchVideos(query = '', append = false) {
+        async function fetchVideos(query = 'myanmar', append = false) {
             if (!append) { page = 1; videoGrid.innerHTML = '<p style="padding:20px;">ဗီဒီယိုများ ဆွဲယူနေပါသည်...</p>'; }
             
             try {
-                const searchKeyword = query ? query : 'popular';
+                const searchKeyword = query ? query : 'myanmar';
                 const url = `${API_BASE}?query=${encodeURIComponent(searchKeyword)}&per_page=${perPage}&page=${page}&thumbsize=big`;
                 const res = await fetch(url);
                 const data = await res.json();
@@ -151,7 +151,7 @@
                 const card = document.createElement('div');
                 card.className = 'card';
                 
-                // Fix for thumbnails: ePorner uses v.default_thumb.src or v.thumbs[0].src
+                // Thumbnail source handling
                 const imgUrl = v.default_thumb ? v.default_thumb.src : (v.thumbs && v.thumbs.length > 0 ? v.thumbs[0].src : '');
 
                 card.innerHTML = `
@@ -222,8 +222,8 @@
             entryModal.style.display = 'none';
         });
 
-        // Initialize Web Load
-        fetchVideos('', false);
+        // Initialize Web Load with default myanmar query
+        fetchVideos('myanmar', false);
     </script>
 </body>
 </html>
