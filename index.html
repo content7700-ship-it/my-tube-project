@@ -22,9 +22,8 @@
         .search-box input { width: 100%; padding: 8px; border: none; border-radius: 4px; background: #333; color: #fff; }
         .search-box button { padding: 8px 15px; border: none; background: #ffcc00; color: #000; border-radius: 4px; font-weight: bold; cursor: pointer; }
 
-        /* Ads Layout Styling */
-        .ad-sidebar { width: 100%; text-align: center; margin-top: 20px; padding: 10px; background: #222; border-radius: 4px; border: 1px solid #333; display: block; }
-        .ad-under-player { width: 100%; text-align: center; margin-top: 20px; padding: 15px; background: #1a1a1a; border-radius: 8px; border: 1px dashed #444; }
+        /* Ads Layout Styling - Under Player Only */
+        .ad-under-player { width: 100%; text-align: center; margin-top: 20px; padding: 15px; background: #1a1a1a; border-radius: 8px; border: 1px dashed #444; min-height: 150px; }
 
         /* Container */
         .container { display: flex; flex: 1; position: relative; }
@@ -65,13 +64,12 @@
         .modal-content p { font-size: 16px; line-height: 1.6; margin-bottom: 20px; color: #e0e0e0; }
         .modal-content button { background: #ffcc00; color: #000; border: none; padding: 10px 30px; font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer; }
 
-        /* Mobile View Fixes */
+        /* Mobile View Styles */
         @media (max-width: 768px) {
             .container { flex-direction: column; }
             aside { width: 100%; flex-direction: row; overflow-x: auto; padding: 10px; gap: 8px; scrollbar-width: none; }
             aside::-webkit-scrollbar { display: none; }
             aside button { shrink: 0; white-space: nowrap; padding: 8px 15px; background: #222; }
-            .ad-sidebar { display: none; } /* Hide breaking sidebar ads on mobile */
             .search-box { width: 60%; }
         }
     </style>
@@ -97,7 +95,7 @@
     </header>
 
     <div class="container">
-        <!-- Sidebar -->
+        <!-- Sidebar (Ad-free & Clean) -->
         <aside>
             <button onclick="filterCategory('myanmar', this)" class="active">မြန်မာကားများ</button>
             <button onclick="filterCategory('burmese subtitles', this)">မြန်မာစာတန်းထိုး</button>
@@ -105,12 +103,6 @@
             <button onclick="filterCategory('japanese', this)">ဂျပန်</button>
             <button onclick="filterCategory('milf', this)">မမများ</button>
             <button onclick="filterCategory('amateur', this)">အပျော်တမ်း</button>
-            
-            <!-- Adsterra Native Banner in Sidebar (Auto-hidden on Mobile to protect UI layout) -->
-            <div class="ad-sidebar">
-                <script async="async" data-cfasync="false" src="https://pl30100430.effectivecpmnetwork.com/f7c652d11d8596df608e6f93212b815b/invoke.js"></script>
-                <div id="container-f7c652d11d8596df608e6f93212b815b"></div>
-            </div>
         </aside>
 
         <!-- Main Workspace -->
@@ -129,8 +121,9 @@
                 </div>
                 <div class="watch-title" id="videoTitle"></div>
                 
-                <!-- Adsterra Native Banner Under Video Player -->
+                <!-- Adsterra Native Banner (Only Rendered Under Video Player) -->
                 <div class="ad-under-player">
+                    <script async="async" data-cfasync="false" src="https://pl30100430.effectivecpmnetwork.com/f7c652d11d8596df608e6f93212b815b/invoke.js"></script>
                     <div id="container-f7c652d11d8596df608e6f93212b815b"></div>
                 </div>
             </div>
