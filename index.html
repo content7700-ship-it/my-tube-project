@@ -1,211 +1,229 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="my">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Pyaw Pyaw Gyi - ဗီဒီယိုများ</title>
-	<meta name="description" content="Pyaw Pyaw Gyi - Premium Dark Video Streaming (မြန်မာ) - GitHub Pages optimized single-file app">
-	<style>
-		:root{
-			--bg:#0b0b0b;
-			--panel:#0f0f11;
-			--muted:#9aa0a6;
-			--accent-gold:#ffd700;
-			--accent-red:#ff3b30;
-			--glass: rgba(255,255,255,0.03);
-		}
-		*{box-sizing:border-box}
-		html,body{height:100%;margin:0;background:linear-gradient(180deg,#040404 0%, #0b0b0b 100%);color:#e6e6e6;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Noto Sans Myanmar", sans-serif}
-		a{color:inherit;text-decoration:none}
-		header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:linear-gradient(90deg, rgba(255,215,0,0.06), rgba(255,69,0,0.03));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
-		.logo{display:flex;gap:12px;align-items:center;font-weight:700;font-size:20px;color:var(--accent-gold)}
-		.logo .brand{font-family:Georgia, serif}
-		.controls{display:flex;gap:12px;align-items:center}
-		.search{display:flex;align-items:center;background:var(--panel);border-radius:8px;padding:6px 8px;border:1px solid rgba(255,255,255,0.03)}
-		.search input{background:transparent;border:0;outline:none;color:inherit;padding:8px 6px;width:320px;min-width:120px}
-		.btn{background:linear-gradient(90deg,var(--accent-gold),var(--accent-red));color:#0a0a0a;padding:8px 12px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
-		.icon-btn{background:transparent;border:0;color:var(--muted);cursor:pointer;padding:6px;border-radius:6px}
-		.container{display:grid;grid-template-columns:260px 1fr;gap:20px;padding:18px;max-width:1200px;margin:18px auto}
-		.sidebar{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
-		.category{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
-		.category a{display:block;padding:10px;border-radius:8px;color:var(--muted);font-weight:600}
-		.category a:hover{background:var(--glass);color:var(--accent-gold)}
-		main{min-height:70vh}
-		.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-		.card{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:10px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,0.02);cursor:pointer}
-		.thumb{width:100%;height:0;padding-bottom:56%;background-size:cover;background-position:center}
-		.meta{padding:10px}
-		.title{font-size:14px;line-height:1.2;color:#eaeaea;height:2.6em;overflow:hidden}
-		.overlay{position:absolute;left:8px;top:8px;background:rgba(0,0,0,0.6);padding:4px 6px;border-radius:6px;font-size:12px;color:#fff}
-		.views{position:absolute;right:8px;bottom:8px;background:linear-gradient(90deg,var(--accent-gold),var(--accent-red));padding:6px 8px;border-radius:8px;font-size:12px;color:#060606;font-weight:700}
-		.play-icon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);border:2px solid rgba(255,255,255,0.06)}
-		.controls .mobile-toggle{display:none}
-		.load-more{display:block;margin:18px auto;padding:10px 16px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);cursor:pointer}
-		.player-modal{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:60;padding:18px;opacity:0;pointer-events:none;transition:opacity .18s}
-		.player-modal.open{opacity:1;pointer-events:auto}
-		.player-box{width:100%;max-width:1000px;background:var(--panel);border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.6)}
-		.player-header{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.02)}
-		.close{background:transparent;border:0;color:var(--muted);cursor:pointer}
-		iframe{width:100%;height:560px;border:0;background:#000}
-		.empty{padding:40px;text-align:center;color:var(--muted)}
-		.spinner{width:36px;height:36px;border-radius:50%;border:4px solid rgba(255,255,255,0.06);border-top-color:var(--accent-gold);animation:spin 1s linear infinite;margin:auto}
-		@keyframes spin{to{transform:rotate(360deg)}}
-		@media(max-width:980px){.grid{grid-template-columns:repeat(3,1fr)}.container{grid-template-columns:1fr;padding:12px}}
-		@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}.search input{width:140px}.controls .mobile-toggle{display:inline-block}.sidebar{display:none}.logo{font-size:18px}.player-box iframe{height:320px}}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyaw Pyaw Gyi</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background-color: #111; color: #fff; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* Header */
+        header { background-color: #1a1a1a; padding: 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #ffcc00; position: sticky; top: 0; z-index: 100; }
+        .logo { color: #ffcc00; font-size: 24px; font-weight: bold; cursor: pointer; }
+        .search-box { display: flex; gap: 5px; width: 50%; max-width: 400px; }
+        .search-box input { width: 100%; padding: 8px; border: none; border-radius: 4px; background: #333; color: #fff; }
+        .search-box button { padding: 8px 15px; border: none; background: #ffcc00; color: #000; border-radius: 4px; font-weight: bold; cursor: pointer; }
+
+        /* Container */
+        .container { display: flex; flex: 1; position: relative; }
+        
+        /* Sidebar */
+        aside { width: 220px; background-color: #1a1a1a; padding: 15px; display: flex; flex-direction: column; gap: 10px; }
+        aside button { background: none; border: none; color: #bbb; text-align: left; padding: 10px; font-size: 16px; cursor: pointer; border-radius: 4px; }
+        aside button:hover, aside button.active { background: #333; color: #ffcc00; font-weight: bold; }
+
+        /* Main Content */
+        main { flex: 1; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        
+        /* Video Card */
+        .card { background: #222; border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.2s; position: relative; border: 1px solid #333; }
+        .card:hover { transform: scale(1.03); border-color: #ffcc00; }
+        .thumb-container { width: 100%; aspect-ratio: 16/9; background: #000; position: relative; }
+        .thumb-container img { width: 100%; height: 100%; object-fit: cover; }
+        .duration { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.8); padding: 2px 6px; font-size: 12px; border-radius: 4px; color: #ffcc00; }
+        .info { padding: 10px; }
+        .video-title { font-size: 14px; font-weight: bold; line-height: 1.4; height: 40px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; margin-bottom: 5px; }
+        .views { font-size: 12px; color: #888; }
+
+        /* Watch Section */
+        #watchSection { display: none; width: 100%; max-width: 900px; margin: 0 auto; }
+        .back-btn { background: #333; color: #ffcc00; border: 1px solid #ffcc00; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-bottom: 15px; display: inline-block; }
+        .player-container { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 8px; overflow: hidden; border: 2px solid #333; }
+        .player-container iframe { width: 100%; height: 100%; border: none; }
+        .watch-title { font-size: 20px; font-weight: bold; margin-top: 15px; color: #ffcc00; }
+
+        /* Load More */
+        .load-more-btn { display: block; width: 200px; margin: 30px auto; padding: 12px; background: #ffcc00; color: #000; border: none; border-radius: 4px; font-weight: bold; font-size: 16px; cursor: pointer; text-align: center; }
+
+        /* Modal Popup */
+        .modal { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: #222; border: 2px solid #ffcc00; padding: 25px; border-radius: 8px; max-width: 450px; text-align: center; box-shadow: 0 0 20px rgba(255,204,0,0.3); }
+        .modal-content h2 { color: #ffcc00; margin-bottom: 15px; }
+        .modal-content p { font-size: 16px; line-height: 1.6; margin-bottom: 20px; color: #e0e0e0; }
+        .modal-content button { background: #ffcc00; color: #000; border: none; padding: 10px 30px; font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer; }
+
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            aside { width: 100%; flex-direction: row; overflow-x: auto; padding: 10px; }
+            aside button { shrink: 0; white-space: nowrap; }
+            .search-box { width: 60%; }
+        }
+    </style>
 </head>
 <body>
-	<header>
-		<div class="logo"><div class="brand">Pyaw Pyaw Gyi</div><div style="font-size:12px;color:var(--muted)">ဗီဒီယိုများ</div></div>
-		<div class="controls">
-			<form id="searchForm" class="search" role="search">
-				<input id="searchInput" placeholder="ရှာရန်... (နာမည်၊ အမျိုးအစား)" aria-label="search">
-				<button class="icon-btn" type="submit">🔍</button>
-			</form>
-			<button id="mobileMenu" class="icon-btn mobile-toggle">☰</button>
-		</div>
-	</header>
 
-	<div class="container">
-		<aside class="sidebar">
-			<nav>
-				<ul class="category">
-					<li><a href="#" data-keyword="လတ်တလောအသစ်များ">လတ်တလောအသစ်များ</a></li>
-					<li><a href="#" data-keyword="လူကြိုက်အများဆုံး">လူကြိုက်အများဆုံး</a></li>
-					<li><a href="#" data-keyword="အာရှ">အာရှ</a></li>
-					<li><a href="#" data-keyword="ဥရောပ">ဥရောပ</a></li>
-					<li><a href="#" data-keyword="ကာတွန်း">ကာတွန်း/Chibi</a></li>
-					<li><a href="#" data-keyword="ဂိမ်း">ဂိမ်း</a></li>
-					<li><a href="#" data-keyword="အကြောင်းအရာ">အခြား</a></li>
-				</ul>
-			</nav>
-		</aside>
+    <div id="entryModal" class="modal">
+        <div class="modal-content">
+            <h2>⚠️ သတိပေးချက်</h2>
+            <p>ဗီဒီယိုများ ချောမွေ့စွာကြည့်ရှုနိုင်ရန် VPN (Singapore သို့မဟုတ် USA) ကျော်ပြီးမှ ကြည့်ရှုပေးပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။</p>
+            <button id="agreeBtn">သဘောတူပါသည်</button>
+        </div>
+    </div>
 
-		<main>
-			<div id="grid" class="grid"></div>
-			<div id="loading" class="empty" style="display:none"><div class="spinner"></div></div>
-			<button id="loadMore" class="load-more">အခြားများ ဖတ်ရှုရန်</button>
-		</main>
-	</div>
+    <header>
+        <div class="logo" onclick="goHome()">Pyaw Pyaw Gyi</div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="ရှာဖွေရန်...">
+            <button onclick="handleSearch()">ရှာပါ</button>
+        </div>
+    </header>
 
-	<div id="playerModal" class="player-modal" aria-hidden="true">
-		<div class="player-box">
-			<div class="player-header">
-				<div id="playerTitle">နမူနာ</div>
-				<div>
-					<button id="openInNew" class="btn" style="margin-right:8px;display:none">ပြင်ပတွင်ဖွင့်ရန်</button>
-					<button id="closePlayer" class="close">✕</button>
-				</div>
-			</div>
-			<iframe id="playerFrame" src="about:blank" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-		</div>
-	</div>
+    <div class="container">
+        <aside>
+            <button onclick="filterCategory('', this)" class="active">လတ်တလောအသစ်များ</button>
+            <button onclick="filterCategory('asian', this)">အာရှ</button>
+            <button onclick="filterCategory('japanese', this)">ဂျပန်</button>
+            <button onclick="filterCategory('milf', this)">မမများ</button>
+            <button onclick="filterCategory('amateur', this)">အပျော်တမ်း</button>
+            <button onclick="filterCategory('cosplay', this)">ကာတွန်း/Cosplay</button>
+        </aside>
 
-	<div id="entryModal" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.75);z-index:80;">
-		<div style="max-width:760px;background:var(--panel);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">
-			<h2 style="margin:0 0 10px;color:var(--accent-gold)">သတိပေးချက်</h2>
-			<p style="color:var(--muted);line-height:1.6">သတိပေးချက် - ဗီဒီယိုများ ချောမွေ့စွာကြည့်ရှုနိုင်ရန် VPN (Singapore သို့မော့် USA) ကျော်ပြီးမှ ကြည့်ရှုပေးပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။</p>
-			<div style="text-align:right;margin-top:12px">
-				<button id="agreeBtn" class="btn">သဘောတူပါသည်</button>
-			</div>
-		</div>
-	</div>
+        <main>
+            <div id="gallerySection">
+                <div class="grid" id="videoGrid"></div>
+                <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">နောက်ထပ်ကြည့်ရန်</button>
+            </div>
 
-	<script>
-		const API_BASE = 'https://www.eporner.com/api/v2/video/search/';
-		let page = 1;
-		const perPage = 24;
-		let currentQuery = '';
+            <div id="watchSection">
+                <button class="back-btn" onclick="goHome()">← နောက်သို့ပြန်သွားရန်</button>
+                <div class="player-container">
+                    <iframe id="videoPlayer" allowfullscreen></iframe>
+                </div>
+                <div class="watch-title" id="videoTitle"></div>
+            </div>
+        </main>
+    </div>
 
-		const grid = document.getElementById('grid');
-		const loadMoreBtn = document.getElementById('loadMore');
-		const loadingEl = document.getElementById('loading');
-		const playerModal = document.getElementById('playerModal');
-		const playerFrame = document.getElementById('playerFrame');
-		const playerTitle = document.getElementById('playerTitle');
-		const openInNew = document.getElementById('openInNew');
+    <script>
+        const API_BASE = 'https://www.eporner.com/api/v2/video/search/';
+        let page = 1;
+        let currentQuery = '';
+        const perPage = 24;
 
-		function showLoading(show){loadingEl.style.display = show ? '' : 'none'; loadMoreBtn.style.display = show ? 'none' : ''}
+        // UI Selectors
+        const videoGrid = document.getElementById('videoGrid');
+        const gallerySection = document.getElementById('gallerySection');
+        const watchSection = document.getElementById('watchSection');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoTitle = document.getElementById('videoTitle');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
 
-		async function fetchVideos(query = '', append = false){
-			showLoading(true);
-			try{
-				const q = encodeURIComponent(query || '');
-				const url = `${API_BASE}?q=${q}&page=${page}&per_page=${perPage}`;
-				const res = await fetch(url);
-				if(!res.ok) throw new Error('Network response not ok');
-				const data = await res.json();
-				const list = data.videos || data.results || data.items || [];
-				if(!append) grid.innerHTML = '';
-				if(!list.length && !append){grid.innerHTML = '<div class="empty">ရရှိနိုင်သည့်ဗီဒီယို မရှိပါ</div>'}
-				renderCards(list);
-			}catch(err){
-				if(!append) grid.innerHTML = '<div class="empty">ထပ်မံအားဖြည့်ရန် အမှားတစ်ခု ဖြစ်ပွားခဲ့သည်</div>'
-			}finally{showLoading(false)}
-		}
+        // Fetch Videos from API
+        async function fetchVideos(query = '', append = false) {
+            if (!append) { page = 1; videoGrid.innerHTML = '<p style="padding:20px;">ဗီဒီယိုများ ဆွဲယူနေပါသည်...</p>'; }
+            
+            try {
+                const searchKeyword = query ? query : 'popular';
+                const url = `${API_BASE}?query=${encodeURIComponent(searchKeyword)}&per_page=${perPage}&page=${page}&thumbsize=big`;
+                const res = await fetch(url);
+                const data = await res.json();
 
-		function renderCards(list){
-			for(const v of list){
-				const id = v.id || v.video_id || v.uid || v.key || '';
-				const title = v.title || v.name || 'ဗီဒီယို';
-				const thumb = v.preview || v.thumbnail || v.thumb || v.snapshots && v.snapshots[0] || '';
-				const duration = v.duration_formatted || (v.duration ? formatDuration(v.duration) : v.length || '---');
-				const views = v.views || v.view_count || v.stats && v.stats.views || '—';
-				let embed = v.embed || v.embed_url || v.player || '';
-				if(!embed && id) embed = `https://www.eporner.com/embed/${id}`;
+                if (!append) videoGrid.innerHTML = '';
 
-				const card = document.createElement('article');
-				card.className = 'card';
-				card.innerHTML = `
-					<div class="thumb" style="background-image:url('${escapeHtml(thumb)}')" data-embed="${escapeHtml(embed)}" data-title="${escapeHtml(title)}"></div>
-					<div class="overlay">${escapeHtml(duration)}</div>
-					<div class="play-icon">▶</div>
-					<div class="meta"><div class="title">${escapeHtml(title)}</div></div>
-					<div class="views">${escapeHtml(views.toString())}</div>`;
-				grid.appendChild(card);
-				card.querySelector('.thumb').addEventListener('click', onCardClick);
-				card.querySelector('.play-icon').addEventListener('click', onCardClick);
-			}
-		}
+                if (data && data.videos && data.videos.length > 0) {
+                    renderCards(data.videos);
+                    loadMoreBtn.style.display = 'block';
+                } else {
+                    if (!append) videoGrid.innerHTML = '<p style="padding:20px;">ဗီဒီယို ရှာမတွေ့ပါ။</p>';
+                    loadMoreBtn.style.display = 'none';
+                }
+            } catch (err) {
+                console.error(err);
+                if (!append) videoGrid.innerHTML = '<p style="padding:20px; color:red;">Error: အချက်အလက်ယူလို့မရပါ။ VPN ဖွင့်ထားဖို့ လိုအပ်ပါသည်။</p>';
+            }
+        }
 
-		function onCardClick(e){
-			const el = e.currentTarget.closest('.card').querySelector('.thumb');
-			const embed = el.dataset.embed || '';
-			const title = el.dataset.title || '';
-			openPlayer(embed || '', title);
-		}
+        // Render Cards with proper ePorner image source logic
+        function renderCards(videos) {
+            videos.forEach(v => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                // Fix for thumbnails: ePorner uses v.default_thumb.src or v.thumbs[0].src
+                const imgUrl = v.default_thumb ? v.default_thumb.src : (v.thumbs && v.thumbs.length > 0 ? v.thumbs[0].src : '');
 
-		function openPlayer(url, title){
-			if(!url){playerFrame.src = 'about:blank'; playerTitle.textContent = 'မတွေ့ပါ'; openInNew.style.display='none'}
-			else{playerFrame.src = url; playerTitle.textContent = title; openInNew.style.display='inline-block'; openInNew.onclick = ()=> window.open(url,'_blank')}
-			playerModal.classList.add('open'); playerModal.setAttribute('aria-hidden','false');
-		}
+                card.innerHTML = `
+                    <div class="thumb-container">
+                        <img src="${imgUrl}" alt="${v.title}" loading="lazy">
+                        <span class="duration">${v.length_min || '00'}:${v.length_sec || '00'}</span>
+                    </div>
+                    <div class="info">
+                        <div class="video-title">${v.title}</div>
+                        <div class="views">👁️ ${parseInt(v.views).toLocaleString()} ကြည့်ရှုသူ</div>
+                    </div>
+                `;
+                card.onclick = () => openWatchPage(v.embed, v.title);
+                videoGrid.appendChild(card);
+            });
+        }
 
-		document.getElementById('closePlayer').addEventListener('click', ()=>{playerModal.classList.remove('open'); playerFrame.src='about:blank'; playerModal.setAttribute('aria-hidden','true')});
-		window.addEventListener('keydown',(e)=>{if(e.key==='Escape'){playerModal.classList.remove('open'); playerFrame.src='about:blank'; playerModal.setAttribute('aria-hidden','true')}});
+        // Open Dedicated Watch Section instead of popup
+        function openWatchPage(embedUrl, title) {
+            gallerySection.style.display = 'none';
+            watchSection.style.display = 'block';
+            videoPlayer.src = embedUrl;
+            videoTitle.innerText = title;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-		function formatDuration(s){
-			const t = Number(s)||0; const h = Math.floor(t/3600); const m = Math.floor((t%3600)/60); const sec = t%60; return (h? h+':':'')+String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');
-		}
+        // Back to Home
+        function goHome() {
+            watchSection.style.display = 'none';
+            videoPlayer.src = '';
+            gallerySection.style.display = 'block';
+        }
 
-		function escapeHtml(s){ if(!s) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+        // Category Filter
+        function filterCategory(cat, btn) {
+            document.querySelectorAll('aside button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentQuery = cat;
+            goHome();
+            fetchVideos(currentQuery, false);
+        }
 
-		document.getElementById('searchForm').addEventListener('submit', (e)=>{e.preventDefault(); const q = document.getElementById('searchInput').value.trim(); currentQuery = q; page = 1; fetchVideos(currentQuery,false)});
+        // Search Action
+        function handleSearch() {
+            const val = document.getElementById('searchInput').value.trim();
+            currentQuery = val;
+            goHome();
+            fetchVideos(currentQuery, false);
+        }
 
-		document.querySelectorAll('.category a').forEach(a=>a.addEventListener('click', (e)=>{e.preventDefault(); const k = a.dataset.keyword||a.textContent; document.getElementById('searchInput').value = k; currentQuery = k; page = 1; fetchVideos(currentQuery,false)}));
+        // Load More Pagination
+        function loadMore() {
+            page++;
+            fetchVideos(currentQuery, true);
+        }
 
-		loadMoreBtn.addEventListener('click', ()=>{page++; fetchVideos(currentQuery,true)});
+        // Notice Modal Control
+        const entryModal = document.getElementById('entryModal');
+        const agreeBtn = document.getElementById('agreeBtn');
+        const seen = localStorage.getItem('pyawpyawgyi:entry_agree');
 
-		// Entry modal logic
-		const entryModal = document.getElementById('entryModal');
-		const agreeBtn = document.getElementById('agreeBtn');
-		const seen = localStorage.getItem('pyawpyawgi:entry_agree');
-		if(seen){entryModal.style.display='none'}
-		agreeBtn.addEventListener('click', ()=>{localStorage.setItem('pyawpyawgi:entry_agree','1'); entryModal.style.display='none'});
+        if (seen) {
+            entryModal.style.display = 'none';
+        }
 
-		// Initial load
-		(function(){fetchVideos('',false)})();
-	</script>
+        agreeBtn.addEventListener('click', () => {
+            localStorage.setItem('pyawpyawgyi:entry_agree', '1');
+            entryModal.style.display = 'none';
+        });
+
+        // Initialize Web Load
+        fetchVideos('', false);
+    </script>
 </body>
 </html>
-
