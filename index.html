@@ -22,6 +22,7 @@
 
         /* Ads Layout Styling */
         .ad-sidebar { width: 100%; text-align: center; margin-top: 20px; padding: 10px; background: #222; border-radius: 4px; border: 1px solid #333; }
+        .ad-under-player { width: 100%; text-align: center; margin-top: 20px; padding: 15px; background: #1a1a1a; border-radius: 8px; border: 1px dashed #444; }
 
         /* Container */
         .container { display: flex; flex: 1; position: relative; }
@@ -92,7 +93,7 @@
         <aside>
             <button onclick="filterCategory('myanmar', this)" class="active">မြန်မာကားများ</button>
             <button onclick="filterCategory('burmese subtitles', this)">မြန်မာစာတန်းထိုး</button>
-            <button onclick="filterCategory('asian', this)" >အာရှ</button>
+            <button onclick="filterCategory('asian', this)">အာရှ</button>
             <button onclick="filterCategory('japanese', this)">ဂျပန်</button>
             <button onclick="filterCategory('milf', this)">မမများ</button>
             <button onclick="filterCategory('amateur', this)">အပျော်တမ်း</button>
@@ -115,6 +116,10 @@
                     <iframe id="videoPlayer" allowfullscreen></iframe>
                 </div>
                 <div class="watch-title" id="videoTitle"></div>
+                
+                <div class="ad-under-player">
+                    <div id="container-f7c652d11d8596df608e6f93212b815b"></div>
+                </div>
             </div>
         </main>
     </div>
@@ -190,6 +195,7 @@
             gallerySection.style.display = 'block';
         }
 
+        // Auto re-trigger Adsterra banner layout on view changes
         function filterCategory(cat, btn) {
             document.querySelectorAll('aside button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
