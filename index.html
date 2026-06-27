@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pyaw Pyaw Gyi</title>
     
-    <script src="https://pl30100429.effectivecpmnetwork.com/dd/4a/29/dd4a29f4a7baef1498ffd21b65723a80.js"></script>
-
-    <script src="https://pl30100431.effectivecpmnetwork.com/a3/42/18/a342185a9216886bb85c2db826ac16d9.js"></script>
-
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
         body { background-color: #111; color: #fff; display: flex; flex-direction: column; min-height: 100vh; }
@@ -21,7 +17,7 @@
         .search-box button { padding: 8px 15px; border: none; background: #ffcc00; color: #000; border-radius: 4px; font-weight: bold; cursor: pointer; }
 
         /* Ads Layout Styling */
-        .ad-under-player { width: 100%; text-align: center; margin-top: 20px; padding: 15px; background: #1a1a1a; border-radius: 8px; border: 1px dashed #444; }
+        .ad-under-player { width: 100%; text-align: center; margin-top: 20px; padding: 15px; background: #1a1a1a; border-radius: 8px; border: 1px dashed #444; min-height: 100px; }
 
         /* Container */
         .container { display: flex; flex: 1; position: relative; }
@@ -84,12 +80,13 @@
     <header>
         <div class="logo" onclick="goHome()">Pyaw Pyaw Gyi</div>
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="ရှာဖွေရန်...">
+            <input type="text" id="searchInput" placeholder="架ရှာဖွေရန်...">
             <button onclick="handleSearch()">ရှာပါ</button>
         </div>
     </header>
 
     <div class="container">
+        <!-- Sidebar - Clean Design (Ad-Free) -->
         <aside>
             <button onclick="filterCategory('myanmar', this)" class="active">မြန်မာကားများ</button>
             <button onclick="filterCategory('burmese subtitles', this)">မြန်မာစာတန်းထိုး</button>
@@ -112,6 +109,7 @@
                 </div>
                 <div class="watch-title" id="videoTitle"></div>
                 
+                <!-- Adsterra Native Banner (Under Video Player Only) -->
                 <div class="ad-under-player">
                     <script async="async" data-cfasync="false" src="https://pl30100430.effectivecpmnetwork.com/f7c652d11d8596df608e6f93212b815b/invoke.js"></script>
                     <div id="container-f7c652d11d8596df608e6f93212b815b"></div>
@@ -119,6 +117,12 @@
             </div>
         </main>
     </div>
+
+    <!-- Adsterra Popunder Code -->
+    <script src="https://pl30100429.effectivecpmnetwork.com/dd/4a/29/dd4a29f4a7baef1498ffd21b65723a80.js"></script>
+
+    <!-- Adsterra Social Bar Code -->
+    <script src="https://pl30100431.effectivecpmnetwork.com/a3/42/18/a342185a9216886bb85c2db826ac16d9.js"></script>
 
     <script>
         const API_BASE = 'https://www.eporner.com/api/v2/video/search/';
