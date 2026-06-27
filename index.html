@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pyaw Pyaw Gyi</title>
     
-    <!-- Adsterra Popunder Code -->
     <script src="https://pl30100429.effectivecpmnetwork.com/dd/4a/29/dd4a29f4a7baef1498ffd21b65723a80.js"></script>
 
-
-    <!-- Adsterra Social Bar Code -->
     <script src="https://pl30100431.effectivecpmnetwork.com/a3/42/18/a342185a9216886bb85c2db826ac16d9.js"></script>
-
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
@@ -24,19 +20,20 @@
         .search-box input { width: 100%; padding: 8px; border: none; border-radius: 4px; background: #333; color: #fff; }
         .search-box button { padding: 8px 15px; border: none; background: #ffcc00; color: #000; border-radius: 4px; font-weight: bold; cursor: pointer; }
 
-        /* Ads Layout Styling - Under Player Only */
-        .ad-under-player { width: 100%; text-align: center; margin-top: 20px; padding: 15px; background: #1a1a1a; border-radius: 8px; border: 1px dashed #444; min-height: 150px; }
+        /* Ads Layout Styling */
+        .ad-sidebar { width: 100%; text-align: center; margin-top: 20px; padding: 10px; background: #222; border-radius: 4px; border: 1px solid #333; }
+        .ad-under-player { width: 100%; text-align: center; margin-top: 20px; padding: 15px; background: #1a1a1a; border-radius: 8px; border: 1px dashed #444; }
 
         /* Container */
         .container { display: flex; flex: 1; position: relative; }
         
         /* Sidebar */
-        aside { width: 220px; background-color: #1a1a1a; padding: 15px; display: flex; flex-direction: column; gap: 10px; shrink: 0; }
+        aside { width: 220px; background-color: #1a1a1a; padding: 15px; display: flex; flex-direction: column; gap: 10px; }
         aside button { background: none; border: none; color: #bbb; text-align: left; padding: 10px; font-size: 16px; cursor: pointer; border-radius: 4px; }
         aside button:hover, aside button.active { background: #333; color: #ffcc00; font-weight: bold; }
 
         /* Main Content */
-        main { flex: 1; padding: 20px; overflow-x: hidden; }
+        main { flex: 1; padding: 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
         
         /* Video Card */
@@ -66,19 +63,16 @@
         .modal-content p { font-size: 16px; line-height: 1.6; margin-bottom: 20px; color: #e0e0e0; }
         .modal-content button { background: #ffcc00; color: #000; border: none; padding: 10px 30px; font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer; }
 
-        /* Mobile View Styles */
         @media (max-width: 768px) {
             .container { flex-direction: column; }
-            aside { width: 100%; flex-direction: row; overflow-x: auto; padding: 10px; gap: 8px; scrollbar-width: none; }
-            aside::-webkit-scrollbar { display: none; }
-            aside button { shrink: 0; white-space: nowrap; padding: 8px 15px; background: #222; }
+            aside { width: 100%; flex-direction: row; overflow-x: auto; padding: 10px; }
+            aside button { shrink: 0; white-space: nowrap; }
             .search-box { width: 60%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- VPN Warning Popup -->
     <div id="entryModal" class="modal">
         <div class="modal-content">
             <h2>⚠️ သတိပေးချက်</h2>
@@ -87,7 +81,6 @@
         </div>
     </div>
 
-    <!-- Header -->
     <header>
         <div class="logo" onclick="goHome()">Pyaw Pyaw Gyi</div>
         <div class="search-box">
@@ -97,7 +90,6 @@
     </header>
 
     <div class="container">
-        <!-- Sidebar (Ad-free & Clean) -->
         <aside>
             <button onclick="filterCategory('myanmar', this)" class="active">မြန်မာကားများ</button>
             <button onclick="filterCategory('burmese subtitles', this)">မြန်မာစာတန်းထိုး</button>
@@ -105,17 +97,19 @@
             <button onclick="filterCategory('japanese', this)">ဂျပန်</button>
             <button onclick="filterCategory('milf', this)">မမများ</button>
             <button onclick="filterCategory('amateur', this)">အပျော်တမ်း</button>
+            
+            <div class="ad-sidebar">
+                <script async="async" data-cfasync="false" src="https://pl30100430.effectivecpmnetwork.com/f7c652d11d8596df608e6f93212b815b/invoke.js"></script>
+                <div id="container-f7c652d11d8596df608e6f93212b815b"></div>
+            </div>
         </aside>
 
-        <!-- Main Workspace -->
         <main>
-            <!-- Grid View Section -->
             <div id="gallerySection">
                 <div class="grid" id="videoGrid"></div>
                 <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">နောက်ထပ်ကြည့်ရန်</button>
             </div>
 
-            <!-- Dedicated Watch Section -->
             <div id="watchSection">
                 <button class="back-btn" onclick="goHome()">← နောက်သို့ပြန်သွားရန်</button>
                 <div class="player-container">
@@ -123,11 +117,12 @@
                 </div>
                 <div class="watch-title" id="videoTitle"></div>
                 
-                <!-- Adsterra Native Banner (Only Rendered Under Video Player) -->
                 <div class="ad-under-player">
-                    <script async="async" data-cfasync="false" src="https://pl30100430.effectivecpmnetwork.com/f7c652d11d8596df608e6f93212b815b/invoke.js"></script>
-<div id="container-f7c652d11d8596df608e6f93212b815b"></div>
-
+                    <div id="container-f7c652d11d8596df608e6f93212b815b"></div>
+                </div>
+            </div>
+        </main>
+    </div>
 
     <script>
         const API_BASE = 'https://www.eporner.com/api/v2/video/search/';
@@ -200,6 +195,7 @@
             gallerySection.style.display = 'block';
         }
 
+        // Auto re-trigger Adsterra banner layout on view changes
         function filterCategory(cat, btn) {
             document.querySelectorAll('aside button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
