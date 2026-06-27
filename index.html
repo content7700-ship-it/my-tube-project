@@ -24,6 +24,12 @@
         aside button { background: none; border: none; color: #bbb; text-align: left; padding: 10px; font-size: 16px; cursor: pointer; border-radius: 4px; }
         aside button:hover, aside button.active { background: #333; color: #ffcc00; font-weight: bold; }
 
+        /* Sidebar Banner 300x250 Container */
+        .ad-sidebar-box { width: 100%; text-align: center; margin-top: 20px; min-height: 250px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+
+        /* Top Banner 468x60 Container */
+        .ad-top-box { width: 100%; max-width: 468px; margin: 0 auto 20px auto; text-align: center; min-height: 60px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+
         /* Main Content */
         main { flex: 1; padding: 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
@@ -60,10 +66,10 @@
             aside { width: 100%; flex-direction: row; overflow-x: auto; padding: 10px; }
             aside button { shrink: 0; white-space: nowrap; }
             .search-box { width: 60%; }
+            .ad-sidebar-box { margin-top: 10px; min-height: auto; } /* ဖုန်းပေါ်မှာ ပုံမပျက်အောင် ညှိထားသည် */
         }
     </style>
 
-    <!-- [လမ်းညွှန်ချက်အတိုင်း] Popunder Code ကို </head> ရဲ့ အပေါ်ကွက်တိမှာ ထည့်သွင်းထားသည် -->
     <script src="https://pl30100429.effectivecpmnetwork.com/dd/4a/29/dd4a29f4a7baef1498ffd21b65723a80.js"></script>
 </head>
 <body>
@@ -92,9 +98,35 @@
             <button onclick="filterCategory('japanese', this)">ဂျပန်</button>
             <button onclick="filterCategory('milf', this)">မမများ</button>
             <button onclick="filterCategory('amateur', this)">အပျော်တမ်း</button>
+
+            <div class="ad-sidebar-box">
+                <script>
+                  atOptions = {
+                    'key' : '021ae99d478b841657b89f1f26211b80',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highperformanceformat.com/021ae99d478b841657b89f1f26211b80/invoke.js"></script>
+            </div>
         </aside>
 
         <main>
+            <div class="ad-top-box">
+                <script>
+                  atOptions = {
+                    'key' : '7b14d159638a2235bbe5f024a34beef0',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highperformanceformat.com/7b14d159638a2235bbe5f024a34beef0/invoke.js"></script>
+            </div>
+
             <div id="gallerySection">
                 <div class="grid" id="videoGrid"></div>
                 <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">နောက်ထပ်ကြည့်ရန်</button>
@@ -215,7 +247,6 @@
         fetchVideos('myanmar', false);
     </script>
 
-    <!-- [လမ်းညွှန်ချက်အတိုင်း] Social Bar Code ကို </body> ရဲ့ အပေါ်ကွက်တိမှာ ထည့်သွင်းထားသည် -->
     <script src="https://pl30100431.effectivecpmnetwork.com/a3/42/18/a342185a9216886bb85c2db826ac16d9.js"></script>
 </body>
 </html>
