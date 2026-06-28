@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pyaw Pyaw Gyi</title>
+    <title>Pyaw Pyaw Gyi</title> 
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
@@ -15,12 +15,13 @@
             --neon-blue: #00f3ff;
             --dark-bg: #0a0a12;
             --card-bg: #121220;
-        }
+            --neon-green: #39ff14;
+        } 
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #050508; }
-        ::-webkit-scrollbar-thumb { background: var(--neon-pink); border-radius: 4px; box-shadow: 0 0 10px var(--neon-pink); }
+        ::-webkit-scrollbar-thumb { background: var(--neon-pink); border-radius: 4px; box-shadow: 0 0 10px var(--neon-pink); } 
 
         /* Header */
         header { 
@@ -72,7 +73,7 @@
             box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
             transition: transform 0.2s;
         }
-        .search-box button:hover { transform: scale(1.05); }
+        .search-box button:hover { transform: scale(1.05); } 
 
         /* Container */
         .container { display: flex; flex: 1; position: relative; }
@@ -104,7 +105,7 @@
             color: var(--neon-blue); 
             border-color: var(--neon-blue);
             box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
-        }
+        } 
 
         /* Main Content */
         main { flex: 1; padding: 25px; background-color: #050508; }
@@ -152,7 +153,7 @@
             margin-bottom: 8px; 
             color: #f1f5f9;
         }
-        .views { font-size: 12px; color: #64748b; display: flex; align-items: center; gap: 4px; }
+        .views { font-size: 12px; color: #64748b; display: flex; align-items: center; gap: 4px; } 
 
         /* Watch Section */
         #watchSection { display: none; width: 100%; max-width: 960px; margin: 0 auto; }
@@ -184,7 +185,77 @@
             box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
         }
         .player-container iframe { width: 100%; height: 100%; border: none; }
-        .watch-title { font-size: 22px; font-weight: bold; margin-top: 20px; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.2); }
+        .watch-title { font-size: 22px; font-weight: bold; margin-top: 20px; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.2); } 
+
+        /* Neon Running Box Under Video Player */
+        .vip-neon-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: #0d0d1a;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Neon Border Flow Animation */
+        @keyframes borderGlow {
+            0% { border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0, 243, 255, 0.3); }
+            50% { border-color: var(--neon-pink); box-shadow: 0 0 15px rgba(255, 0, 127, 0.3); }
+            100% { border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0, 243, 255, 0.3); }
+        }
+        .vip-neon-box {
+            animation: borderGlow 4s infinite;
+        }
+
+        /* Neon Running Text Effect */
+        .vip-neon-text {
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255,255,255,0.5);
+            margin-bottom: 20px;
+        }
+        .vip-neon-text span.highlight {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+        .vip-neon-text span.price {
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+            font-size: 18px;
+        }
+
+        /* Color Running Button Animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .vip-btn {
+            display: inline-block;
+            padding: 12px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 30px;
+            background: linear-gradient(-45deg, #ff007f, #00f3ff, #7928ca, #ff007f);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.5), 0 0 25px rgba(255, 0, 127, 0.4);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        .vip-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.8), 0 0 35px rgba(255, 0, 127, 0.7);
+        }
 
         /* Load More Button */
         .load-more-btn { 
@@ -203,7 +274,7 @@
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
             transition: all 0.3s;
         }
-        .load-more-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px var(--neon-blue); }
+        .load-more-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px var(--neon-blue); } 
 
         /* Warning Modal Popup */
         .modal { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(3, 3, 5, 0.95); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
@@ -230,7 +301,7 @@
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
             transition: all 0.2s;
         }
-        .modal-content button:hover { transform: scale(1.05); box-shadow: 0 0 25px var(--neon-pink); }
+        .modal-content button:hover { transform: scale(1.05); box-shadow: 0 0 25px var(--neon-pink); } 
 
         /* Responsive UI Mobile */
         @media (max-width: 768px) {
@@ -240,12 +311,14 @@
             .search-box { width: 60%; }
             main { padding: 15px; }
             .grid { gap: 15px; }
+            .vip-neon-text { font-size: 14px; line-height: 1.6; }
+            .vip-btn { padding: 10px 30px; font-size: 15px; }
         }
-    </style>
+    </style> 
 
     <script src="https://pl30107275.effectivecpmnetwork.com/6d/4d/e4/6d4de4e3be9a545c19af85462e746143.js"></script>
 </head>
-<body>
+<body> 
 
     <div id="entryModal" class="modal">
         <div class="modal-content">
@@ -253,7 +326,7 @@
             <p>ဗီဒီယိုများ ချောမွေ့စွာကြည့်ရှုနိုင်ရန် VPN (Singapore သို့မဟုတ် USA) ကျော်ပြီးမှ ကြည့်ရှုပေးပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။</p>
             <button id="agreeBtn">သဘောတူပါသည်</button>
         </div>
-    </div>
+    </div> 
 
     <header>
         <div class="logo" onclick="goHome()">Pyaw <span>Pyaw Gyi</span></div>
@@ -261,7 +334,7 @@
             <input type="text" id="searchInput" placeholder="ရှာဖွေရန်...">
             <button onclick="handleSearch()">ရှာပါ</button>
         </div>
-    </header>
+    </header> 
 
     <div class="container">
         <aside>
@@ -271,13 +344,13 @@
             <button onclick="filterCategory('japanese', this)">ဂျပန်</button>
             <button onclick="filterCategory('milf', this)">မမများ</button>
             <button onclick="filterCategory('amateur', this)">အပျော်တမ်း</button>
-        </aside>
+        </aside> 
 
         <main>
             <div id="gallerySection">
                 <div class="grid" id="videoGrid"></div>
                 <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">နောက်ထပ်ကြည့်ရန်</button>
-            </div>
+            </div> 
 
             <div id="watchSection">
                 <button class="back-btn" onclick="goHome()">← နောက်သို့ပြန်သွားရန်</button>
@@ -285,22 +358,29 @@
                     <iframe id="videoPlayer" allowfullscreen></iframe>
                 </div>
                 <div class="watch-title" id="videoTitle"></div>
+
+                <div class="vip-neon-box">
+                    <div class="vip-neon-text">
+                        မြန်မာချောင်းရိုက် // ကလေး အောကား // ဆယ်လီ အောကား // local leak // အထန်မလေးတွေ တစ်နေရာတည်းမှာ အစုံအလင်ကြည့်ဖို့ <span class="price">15000ks</span> ထဲဖြင့် <span class="highlight">Vip ဝင်နိုင်ပါပြီ</span>
+                    </div>
+                    <a href="https://t.me/Burma_VIP_Bot?start=Start" target="_blank" class="vip-btn">Vip ဝယ်ယူရန်</a>
+                </div>
             </div>
         </main>
-    </div>
+    </div> 
 
     <script>
         const API_BASE = 'https://www.eporner.com/api/v2/video/search/';
         let page = 1;
         let currentQuery = 'myanmar';
-        const perPage = 24;
+        const perPage = 24; 
 
         const videoGrid = document.getElementById('videoGrid');
         const gallerySection = document.getElementById('gallerySection');
         const watchSection = document.getElementById('watchSection');
         const videoPlayer = document.getElementById('videoPlayer');
         const videoTitle = document.getElementById('videoTitle');
-        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const loadMoreBtn = document.getElementById('loadMoreBtn'); 
 
         async function fetchVideos(query = 'myanmar', append = false) {
             if (!append) { page = 1; videoGrid.innerHTML = '<p style="padding:20px; color:var(--neon-blue);">ဗီဒီယိုများ ဆွဲယူနေပါသည်...</p>'; }
@@ -308,9 +388,9 @@
                 const searchKeyword = query ? query : 'myanmar';
                 const url = `${API_BASE}?query=${encodeURIComponent(searchKeyword)}&per_page=${perPage}&page=${page}&thumbsize=big`;
                 const res = await fetch(url);
-                const data = await res.json();
+                const data = await res.json(); 
 
-                if (!append) videoGrid.innerHTML = '';
+                if (!append) videoGrid.innerHTML = ''; 
 
                 if (data && data.videos && data.videos.length > 0) {
                     renderCards(data.videos);
@@ -323,13 +403,13 @@
                 console.error(err);
                 if (!append) videoGrid.innerHTML = '<p style="padding:20px; color:var(--neon-pink);">Error: အချက်အလက်ယူလို့မရပါ။ VPN ဖွင့်ထားဖို့ လိုအပ်ပါသည်။</p>';
             }
-        }
+        } 
 
         function renderCards(videos) {
             videos.forEach(v => {
                 const card = document.createElement('div');
                 card.className = 'card';
-                const imgUrl = v.default_thumb ? v.default_thumb.src : (v.thumbs && v.thumbs.length > 0 ? v.thumbs[0].src : '');
+                const imgUrl = v.default_thumb ? v.default_thumb.src : (v.thumbs && v.thumbs.length > 0 ? v.thumbs[0].src : ''); 
 
                 card.innerHTML = `
                     <div class="thumb-container">
@@ -344,7 +424,7 @@
                 card.onclick = () => openWatchPage(v.embed, v.title);
                 videoGrid.appendChild(card);
             });
-        }
+        } 
 
         function openWatchPage(embedUrl, title) {
             gallerySection.style.display = 'none';
@@ -352,13 +432,13 @@
             videoPlayer.src = embedUrl;
             videoTitle.innerText = title;
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        } 
 
         function goHome() {
             watchSection.style.display = 'none';
             videoPlayer.src = '';
             gallerySection.style.display = 'block';
-        }
+        } 
 
         function filterCategory(cat, btn) {
             document.querySelectorAll('aside button').forEach(b => b.classList.remove('active'));
@@ -366,33 +446,33 @@
             currentQuery = cat;
             goHome();
             fetchVideos(currentQuery, false);
-        }
+        } 
 
         function handleSearch() {
             const val = document.getElementById('searchInput').value.trim();
             currentQuery = val;
             goHome();
             fetchVideos(currentQuery, false);
-        }
+        } 
 
         function loadMore() {
             page++;
             fetchVideos(currentQuery, true);
-        }
+        } 
 
         const entryModal = document.getElementById('entryModal');
         const agreeBtn = document.getElementById('agreeBtn');
-        const seen = localStorage.getItem('pyawpyawgyi:entry_agree');
+        const seen = localStorage.getItem('pyawpyawgyi:entry_agree'); 
 
-        if (seen) { entryModal.style.display = 'none'; }
+        if (seen) { entryModal.style.display = 'none'; } 
 
         agreeBtn.addEventListener('click', () => {
             localStorage.setItem('pyawpyawgyi:entry_agree', '1');
             entryModal.style.display = 'none';
-        });
+        }); 
 
         fetchVideos('myanmar', false);
-    </script>
+    </script> 
 
     <script src="https://pl30107276.effectivecpmnetwork.com/37/1c/80/371c80a1b65f943d7ece088ba43c32c2.js"></script>
 </body>
